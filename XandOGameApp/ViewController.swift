@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         setupUI()
     }
 
-
     func setupUI() {
         startButton.layer.cornerRadius = 10
         cardView.layer.cornerRadius = 10
@@ -30,8 +29,15 @@ class ViewController: UIViewController {
         cardView.layer.shadowOffset = .zero
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextField.resignFirstResponder()
+    }
+    
     @IBAction func startBtnClicked(_ sender: UIButton) {
+        guard !nameTextField.text!.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
+        vc.playerName = nameTextField.text ?? ""
         vc.modalTransitionStyle = .flipHorizontal
         vc.modalPresentationStyle = .fullScreen
         show(vc, sender: nil)
