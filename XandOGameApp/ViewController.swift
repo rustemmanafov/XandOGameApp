@@ -8,18 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var startButton: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
     }
-
+    
     func setupUI() {
         startButton.layer.cornerRadius = 10
         cardView.layer.cornerRadius = 10
